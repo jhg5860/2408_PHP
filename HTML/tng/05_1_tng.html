@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>회원가입을 환영합니다</h1>
+    <form action="">
+        <fieldset>
+            <legend>사용자 정보</legend>
+            <ul>
+                <li>
+                    <label for="id">아이디</label>
+                    <input type="id" id="id" required minlength="3" maxlength="11" placeholder="4자~ 10자사이, 공백없이">
+                </li>
+                <li>
+                    <label for="email">이메일</label>
+                    <input type="email" id='email'>
+                </li>
+                <li>
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" placeholder="문자와 숫자, 특수 기호 포함">
+                </li>
+                <li>
+                    <label for="passwordCheckbox">비밀번호 확인</label>
+                    <input type="passwordCheckbox" id="passwordCheckbox">
+                </li>
+                <li>
+                    <label for="join">가입 경로</label>
+                    <select id="join">
+                        <option value="0">기타</option>
+                        <option value="1">소개</option>
+                        <option value="2">인터넷</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="memo">메모</label>                
+                    <textarea cols="30" rows="10" placeholder="남길 말씀이 있다면 여기에" id="memo"></textarea>
+                </li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>이벤트와 새로운 소식</legend>
+            <input type="radio"name="eamil"id="eamil">
+            <label for="radio"name="eamil">메일 수신</label>
+            <input type="radio"name="eamilx"id="eamilx"checked>
+            <label for="radio"name="eamilx" >메일 수신 안함</label>
+        </fieldset>
+
+        <button type="submit">가입하기</button>
+        <button type="reset">취소</button>
+    </form>
+</body>
+</html>
