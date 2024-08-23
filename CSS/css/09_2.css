@@ -4,10 +4,10 @@
 
     background-image: url("../img/meerkat.webp");
    
-   /* content가 넘칠 때 스크롤 생성
+   /* content가 넘칠 때 스크롤 생성 */
     overflow: scroll;
     
-    */
+   
 
    /* 배경 이미지 크기 설정 
         background-size : 배경 이미지의 크기를 설정합니다.
@@ -19,16 +19,21 @@
         -%: 이미지의 비율에 맞도록 조절합니다.    
    */
         
-   background-size: cover;
+   /* background-size: cover; */
 
     /*  
-    background-position : 배경 이미지의 초기 위치를 설정합니다.
+      background-position : 배경 이미지의 초기 위치를 설정합니다.
     ** 속성 값 **
-    -키워드 : top, left, right , bottom, center
-    -퍼센티지 : 25% 75%
-    -Edge offsets: bottom 30px right 50px
+        -키워드 : top, left, right , bottom, center
+        -퍼센티지 : 25% 75%
+        -Edge offsets: bottom 30px right 50px
     */
-background-position: center;
+    /* background-position: center; */
+
+    /* 
+       background-attachment : 스크롤이 생길경우 배경 이미지의 고정 여부 설정
+     */
+    background-attachment: local;
 }
 
 .div-repeat {

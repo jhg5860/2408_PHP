@@ -1,0 +1,88 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 700px;
+    height:700px;
+    padding: 5px;
+    margin: auto;
+    border: 1px dotted #000;
+    background-image: url(../img/meerkat.webp);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 200px 350px;
+}
+
+.header {
+    background-color: rgb(18, 116, 18);
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    color: white;
+}
+
+.header-title {
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: 900    
+}
+
+.main-info{
+    margin: 30px;
+}
+
+.main-text{
+    margin-left :50px;
+    list-style-position: inside;
+}
+
+.div-text {
+    color:red;
+    font-size: 1.3rem;
+    padding: 10px;
+    font-weight : 900        
+}
+
+/* 
+body {
+    background-color: #000;
+    
+}
+
+.container{
+    width: 500px;
+    height: 700px;
+    margin: auto;
+    padding: 30px 15px;
+    background-color: #fff;
+    background-image: url(../img/meerkat.webp);
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    border: 1px dotted #000;
+
+}
+
+h1 {
+    background-color: darkcyan;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
+h2 {
+    text-align: center;
+    margin: 40px;
+
+}
+
+h3 {
+    color :#ff0000
+}
+
+ul {
+    list-style-type: none;
+    line-height: 2rem;
+} */
