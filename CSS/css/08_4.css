@@ -35,7 +35,7 @@
     inline-block:
         block과 inline의 중간 형태로 요소는 inline인데 내부는 block처럼 표시합니다.
         inline 처럼 컨텐츠 만큼 영역을 차지하여 가로로 배치되지만,
-        block 처럼 내부 속성인 width, height 등과 같이 
+        block 처럼 내부 속성인 width, height 등과 같은 속성을 지정 가능 
 */
 
 .inline-block {

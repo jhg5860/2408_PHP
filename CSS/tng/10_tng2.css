@@ -1,0 +1,60 @@
+body {
+    width: 500px;
+    height: 300px;
+    margin: 5px;
+    padding: 5px;
+}
+
+fieldset {
+    background-image: url(../img/happy_icon.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;    
+}
+
+legend{
+    color: magenta;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    list-style-type: none;    
+}
+
+.required::before {
+    content: '*';
+    color: red;
+}
+
+input, textarea {
+    background-color: transparent;
+}
+
+input:focus, textarea:focus {
+    border: 3px solid #ff0000;
+    outline: none;
+}
+
+.radio-gender:checked + label {
+    color :#ff0000;
+}
+
+textarea {  
+    vertical-align:top;
+}
+
+.hide {
+    display: none;
+    margin: 0;
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-send:hover +.hide {
+    display: inline-block;
+}
