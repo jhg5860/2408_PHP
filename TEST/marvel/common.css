@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 100vh;
+}
+
+h1 {
+    margin: 3rem auto;
+    text-align: center;
+    color: #fff; 
+}
+
+/* sidebar */
+
+.sidebar {
+    background-color: #ff3b49;   
+}
+
+.side-menu {
+    list-style: none;
+    color: #fff;
+    margin-bottom : 3rem;    
+}
+
+.side-menu >li {
+    padding: 0.2rem 1rem; 
+}
+
+.side-menu >li:nth-child(1) {
+    font-weight: 900;
+    background-color: #ff5662;
+    padding: 0.5rem 1rem;
+}
+
+.side-menu> li:not(:nth-child(1)):hover {
+    background-color: rgba(0, 0, 0 , 0.8);
+    /* 투명도 설정할 때 */
+    /* opacity: 0.8; */
+    /* 반응 all-width , height 모든속성 */
+    transition: all 1.5s;
+}
+
+/* a 태그 사용시 text-decoration 이랑 글자색이 기본적으로 들어감 */
+a {
+    text-decoration: none;
+    color: #ffff;
+}
+
+/* main */
+.main {
+    background-color: #e1e1e1;    
+}
+
+.main-search-bar {
+    height:50px;
+}
+
+.main-search-bar >form {
+    display: flex;
+    justify-content: space-around;
+    padding: 5px 1rem;
+}
+
+#search {
+    width: 80%;
+}
+
+.btn-search {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #6e5af0;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 900;
+    line-height: 40px;
+}
+
+/* title */
+
+/* 글자 중앙정렬 할때 디스플레이를 flex두고 justify-content(주축) 이랑 align-item(교차축)을 center*/
+.main-title-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    background-image: url('./img/main_title.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h2 {
+    font-size: 3rem;
+    color: #fff;
+    
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 1rem;
+    gap: 1rem;
+
+}
+
+.card {
+    background-color: #fff;
+    padding: 1rem;
+}
+
+.card-img {    
+    /* 부모의 width 크기의 70% */
+    padding-top: 70%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-title {
+    margin:1rem 0;
+}
+
+/* 탑버튼 */
+.btn-top {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    font-weight: 900;
+}
