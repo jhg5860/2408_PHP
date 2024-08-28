@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <div class="side-bar">
-            <h1>영화관이여</h1>
+                <h1>영화관이여</h1>
             <ul class="side-bar-menu">
                 <li>메뉴 01</li>
                 <li>영화 소개</li>
@@ -27,20 +27,53 @@
             </ul>
         </div>
         <div class="main">
+            <div class="main-search-bar">
             <form action="">
-                <input type="search">
-                <button type="submit">S</button>
+                <input type="search" name="search" id="search">
+                <button class="btn-search" type="submit">S</button>
             </form>
+        </div>     
         <div class="main-title">
             <h2>영화</h2>
         </div>
         <div class="main-content">
-            <div class="card-img" style="background-image: url(./img/ant_man_and_the_wasp_2018_large_cover.jpg);">
-                <h3>앤트맨 THE WASP</h3>
-                <P>2019</P>
+            <div class="card">
+                <div class="card-img" style="background-image: url(./img/ant_man_and_the_wasp_2018_large_cover.jpg);"></div>
+                <h3 class="card-title">앤트맨 THE WASP</h3>
+                <P class="card release">2019</P>
+            </div>            
+       
+            <div class="card">                    
+                <div class="card-img" style="background-image: url('./img/avengers_infinity_war_2018_large_cover.jpg');"></div> 
+                <!-- <img class="card-img" src="./img/avengers_infinity_war_2018_large_cover.jpg" alt=""> -->
+                <h3 class="card-title">어벤져스 Infitity War</h3>
+                <P class="card-release">2018</P>                 
             </div>
+
+            <div class="card">
+                <div class="card-img" style="background-image: url('./img/black_panther_2018_large_cover.jpg');"></div> 
+                <!-- <img class="card-img" src="./img/avengers_infinity_war_2018_large_cover.jpg" alt=""> -->
+                <h3 class="card-title">블랙 팬서</h3>
+                <P class="card-release">2018</P>                  
+            </div>
+
+            <div class="card">                    
+                <div class="card-img" style="background-image: url('./img/captain_marvel_2019_large_cover.jpg');"></div> 
+                <!-- <img class="card-img" src="./img/avengers_infinity_war_2018_large_cover.jpg" alt=""> -->
+                <h3 class="card-title">캡틴마블</h3>
+                <P class="card-release">2019</P>                    
+            </div>
+
+            <div class="card">                   
+                <div class="card-img" style="background-image: url('./img/thor_ragnarok_2017_large_cover.jpg');"></div> 
+                <!-- <img class="card-img" src="./img/avengers_infinity_war_2018_large_cover.jpg" alt=""> -->
+                <h3 class="card-title">토르 라그나로크</h3>
+                <P class="card-release">2017</P>                    
+            </div>
+
         </div>
-        </div>
+    </div>
+    <a href="#"><button type="button" class="btn-top">TOP</button></a>
     </div>
 </body>
 </html>
