@@ -1,0 +1,74 @@
+* {
+
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+.main-img {
+    background-image: url(./img/img_1.jpg);
+    background-repeat: no-repeat;
+    /* 백그라운드 위치 설정 */
+    background-position: top;
+    background-size:cover;
+    height: 400px;
+    display: grid;        
+}
+
+.main-title {
+    color: #fff;    
+}
+
+.main-text {
+    display: grid;
+    color: #fff;
+    font-weight:900;  
+}
+
+.main-content {
+   display: grid;
+   grid-template-columns: repeat(auto-fit , minmax(350px ,1fr));
+}
+
+.card {
+    /* border 투명도 rgba(0 , 0 , 0, 투명도(수치) */
+    border:1px solid rgba(0, 0, 0 ,0.2);
+    /* border 모서리만 둥글게 */
+    border-top-left-radius :10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius:10px;   
+    margin: 2rem 0 0 1rem;
+    padding:1rem;
+    
+}
+
+.card-img {
+    padding-top:70%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-title {
+    background-color: #000;
+    color: #fff;
+}
+
+
+.footer {
+    /* 하단에 고정하는법  먼저 포지션을 fixed로 주고 */
+    position: fixed;
+    left:0px;
+    bottom:0px;
+    width: 100%;
+    background-color: #4b4747;
+    height: 50px;
+   
+}
+
+.footer-txt { 
+    padding:10px;    
+    color:#fff;
+    text-align: center;
+   
+}
