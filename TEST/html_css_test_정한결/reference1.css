@@ -1,0 +1,143 @@
+/* 전체 선택자 */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;   
+}
+
+html {
+    scroll-behavior: smooth;
+} 
+
+/* display : flex로두 가능 */
+/* header {
+    background-image:url('./img/img_1.jpg');
+    color:#fff;
+    padding :30px;
+    display: flex;
+    flex-wrap :wrap;
+    gap:40px;
+}
+
+header >h1 {
+    font-size: 3rem;
+    min-width: 400px;
+}
+
+.header-info {
+    max-width: 50%;
+}
+
+@media(max-width:800px) {
+    .header-info {
+        max-width: 100%;
+    }
+} */
+
+/* common */
+
+button {
+    background-color: goldenrod;
+    color: #fff;
+    border-radius :5px;
+    padding :15px; 
+    border: none;
+    font-size:1.5rem;
+}
+
+button:hover {
+    opacity: 0.5;
+    transition: all 1.5s;
+}
+
+
+/* header */
+header {
+    background-image: url('./img/img_1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding :30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(380px,1fr));    
+}
+
+/*  디스플레이를 flex로 변경하고 방향을 가로로 변경후 간격을 30px*/
+/* .header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+} */
+
+header >h1 {
+    margin: 5rem 0;
+    font-size: 4rem;
+}
+
+.header-info >p {
+    font-size: 1.5rem;
+    margin: 30px 0;
+}
+
+/* main */
+
+main {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(350px ,1fr));
+    gap: 15px;
+    margin-bottom: 60px;
+}
+
+
+/* main 안에 div */
+.card {
+    border: 1px solid #c9c9c9; 
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.card > a> button {
+    font-size: 1rem;
+    width: 100%;
+    display: inline-block;
+}
+
+.main-img {
+    /* 백그라운드 사이즈 :background-size */
+    background-size: cover;
+    background-repeat:no-repeat;
+    padding-top :70%;
+    position: relative;   
+}    
+
+.img-title {
+    position: absolute;
+    bottom:0;
+    background-color: rgba(0, 0, 0 , 0.7);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 900;
+    padding: 15px;
+    width:100%;
+}
+
+/* footer */
+
+footer {
+    position: fixed;
+    bottom: 0;
+    background-color: rgb(48, 47, 47);
+    color: #fff;
+    width: 100vw;
+    padding :20px;
+}
+
+footer >p {
+    text-align: center;
+}
