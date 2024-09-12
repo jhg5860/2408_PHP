@@ -33,10 +33,11 @@
 // // 출력 처리
 // foreach($get_numbers as )
 
-$arr=range(1,45); // 1~45의 수를 가지는 배열
+$arr=range(1,45); // 1~45의 수를 가지는 배열 // 범위를 포함하는 배열 생성 <range>
 $get_numbers =[]; // 뽑은 숫자 저장용 배열
 
-$random_key =array_rand($arr,6);  // 배열에서 랜덤한 키 (6개) 획득
+$random_key =array_rand($arr,6);  // 배열에서 랜덤한 키 (6개) 획득 
+// array_rand(range(1,45) , 숫자) - 1,배열의 숫자를 받습니다 무작위로 뽑히기 원하는 숫자 2. 몇개의 숫자를 뽑을지 정해서 리턴해서 출력
 
 // 랜덤한 키를 루프
 foreach($random_key as $val) {

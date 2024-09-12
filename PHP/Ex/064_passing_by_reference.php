@@ -1,24 +1,24 @@
 <?php
-// 값복사(Value of Copy)
-// $num1 = 100;
-// $num2 = $num1; //&$num1참조 $num1복사
+값복사(Value of Copy)
+$num1 = 100;
+$num2 = $num1; //&$num1참조 $num1복사
 
-// $num2 -= 50;
+$num2 -= 50;
 
-// echo $num1, $num2; // num1= 100 , num2= 50
+echo $num1, $num2; // num1= 100 , num2= 50
 
-// // 참조전달 (Passing By Reference)
-// $num3 = 100;
-// $num4 = $num3; //&$num1참조 $num1복사
+// 참조전달 (Passing By Reference)
+$num3 = 100;
+$num4 = $num3; //&$num1참조 $num1복사
 
-// $num4 -= 50;
+$num4 -= 50;
 
-// echo $num3, $num4; // num3= 50, num4= 50
+echo $num3, $num4; // num3= 50, num4= 50
 
-// echo "\n\n";
-// function my_test(&$num) {
-//     $num--;
-// }
+echo "\n\n";
+function my_test(&$num) {
+    $num--;
+}
 
 // $num5= 5;
 // my_test($num5);
