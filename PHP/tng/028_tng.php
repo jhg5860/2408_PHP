@@ -13,6 +13,7 @@
 //         echo ",";
 //     }
 // }
+ 
 // 1.for ($i = 1; $i <= 100; $i++): 1부터 100까지 반복합니다.
 // 2.if ($i % 3 == 0): 현재 숫자가 3의 배수인지 확인합니다.
 // 3.배수인 경우 "짝"을 출력합니다.
@@ -39,7 +40,7 @@ $arr = [
 
 // 반복문을 이용하여 조건에 맞는 사원 출력
 foreach ($arr as $item) {
-    if ($item['salary'] >= 5000 && $item['gender'] == 'M') {
+    if ((int)$item['salary'] >= 5000 && $item['gender'] == 'M') {
         echo "id: " . $item['id'] . ", name: " . $item['name'] . "\n";
     }
 }
