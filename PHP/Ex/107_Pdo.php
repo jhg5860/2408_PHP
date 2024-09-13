@@ -40,9 +40,4 @@ foreach($result as $item) {
     echo $item["emp_id"]." ".$item["name"]."\n";
 }
 
-// public function query($sql) {
-//     // db에 질의 처리
-
-//     return new PDOStatement();
-// }
 
