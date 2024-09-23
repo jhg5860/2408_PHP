@@ -9,17 +9,20 @@
 
 
 
-fscanf(STDIN , "%s\n", $input);
+// fscanf(STDIN , "%s\n", $input);
 
-echo $input;
+// echo $input;
 
-$rsp=0;
+$rsp=(0);
 
 switch($rsp) {
     case 0;
     echo "rock";
     break;
     case 1;
+    break;
     echo "scissors";
-    
+    case 2;
+    echo "paper";
+    break;
 }

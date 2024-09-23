@@ -1,0 +1,27 @@
+/* 메인 */
+/*div main-top 로 감싸서 메인 버튼 오른쪽으로 정렬 */
+.main-top{
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+ /*div를 grid로 가로 배치 하는 법 */
+ .item {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 10px;
+    margin-bottom: 10px;    
+}
+
+.list-head {
+    background-color: #7BA9FF;
+    border-radius: 40px;
+    color:#fff;
+    
+}
+
+.list-content {
+    background-color: #fff;
+}
