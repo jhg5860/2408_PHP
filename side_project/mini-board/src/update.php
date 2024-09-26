@@ -1,3 +1,4 @@
+<!-- 9/25 -->
 <?php
     require_once($_SERVER["DOCUMENT_ROOT"]."/config.php");
     require_once(MY_PATH_DB_LIB);
@@ -36,30 +37,50 @@
             //POST 처리
             
             // parameter 획득
-             //  Id 획득
-             $id = isset($_POST["id"]) ? (int)$_POST["id"] :0;
+            //  Id 획득
+            $id = isset($_POST["id"]) ? (int)$_POST["id"] :0;
 
-             // page 획득
-             $page = isset($_POST["page"]) ? (int)$_POST["page"] : 1;
-             
-             //title 획득
-             $title = isset($_POST["title"]) ? $_POST["title"] :"";
+            // page 획득
+            $page = isset($_POST["page"]) ? (int)$_POST["page"] : 1;
+            
+            //title 획득
+            $title = isset($_POST["title"]) ? $_POST["title"] :"";
 
-             //content 획득
-             $content = isset($_POST["content"]) ? $_POST["content"] :"";
-  
-              if($id <1 || $title === "") {
-                  throw new Exception("파라미터 오류");
-              }
-              
-              // PDO Instance
-              $conn = my_db_conn();
-              
-              // Transaction Start
-              $conn->beginTransaction();
+            //content 획득
+            $content = isset($_POST["content"]) ? $_POST["content"] :"";
+
+            if($id <1 || $title === "") {
+                throw new Exception("파라미터 오류");
+            }
+            
+            // PDO Instance
+            $conn = my_db_conn();
+            
+            // Transaction Start
+            $conn->beginTransaction();
+
+            // 09.26 
+            $arr_prepare = [
+            "id" => $id
+            ,"title" => $title
+            ,"content" => $content
+            ];
+
+            my_board_update($conn, $arr_prepare);
+
+            // commit
+            $conn-> commit();
+            
+            // detail page로 이동
+            header("Location: /detail.php?id=".$id."&page=".$page);
+            exit;
 
         }
     } catch(Throwable $th) {
+        if(!is_null($conn) && $conn->inTransaction())
+            $conn->rollBack();
+
+
         require_once(MY_PATH_ERROR);
         exit;
     }
@@ -108,3 +129,4 @@
     </main>
 </body>
 </html>
+

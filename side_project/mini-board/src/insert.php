@@ -3,6 +3,7 @@
     require_once($_SERVER["DOCUMENT_ROOT"]."/config.php");
     require_once(MY_PATH_DB_LIB);
 
+    $conn =null;
     // post 처리
     if(strtoupper($_SERVER["REQUEST_METHOD"]) === "POST") {
         try {

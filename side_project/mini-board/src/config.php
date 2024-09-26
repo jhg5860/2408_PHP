@@ -1,6 +1,6 @@
 <?php
 // 09/24
-// ** MariaDB 설정 ** ctrl shift L 
+// ** MariaDB 설정 ** 
 define("MY_MARIADB_HOST", "localhost");
 define("MY_MARIADB_PORT" , "3306");
 define("MY_MARIADB_USER", "root");
