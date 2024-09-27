@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/insert.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <title>영화 작성 페이지</title>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>영화 게시판</h1>
+        </header>   
+
+        
+        <div class="title-box">
+            <input type="text" id="text" name="text">
+        </div>        
+        <!-- 이미지 -->
+               <div class="img-select-box">
+                <form action="./" method="post" enctype="multipart/form-data">
+                    <input type="file" id="file" name="file">
+                    <button type="submit">전송</button>
+                </form>
+               </div>
+        <div class="content-box">
+            <textarea name="content" id="content"></textarea>
+        </div>
+
+        
+
+        <div class="main-footer">
+               <a href="./"><button class="button-small">작성</button></a>
+               <a href="./"><button class="button-small">취소</button></a>
+        </div>
+           
+
+     </main>      
+</body>
+</html>
