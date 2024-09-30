@@ -1,0 +1,74 @@
+.title-box { 
+    display: grid;
+    color:#000000;
+    grid-template-columns: 200px 1fr 2fr ;
+    width: auto;
+    min-height: 50px;
+    margin: 40px 0;
+}
+
+.box {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+.img-select-box {
+    background: url(../avengers_end.jpg);
+    background-position:space-between;
+    background-repeat: no-repeat;
+    background-size: auto;
+    width:auto;
+    min-height:500px;
+    margin: 40px;
+}
+
+.content-box {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    min-height : auto;
+    margin: 40px;
+    color: #000;
+}
+
+.content-box p {
+    text-align:left;
+    font-weight: 900;
+    font-size: 1.5rem;
+}
+
+.main-delete p {
+    font-weight: 900;
+    font-size: 2rem;
+    margin:30px;
+    color:red;
+}
+
+
+
+.title-box { 
+    display: grid;
+    grid-template-columns: 1fr; 
+    width: auto;
+    min-height: 50px;
+    margin: 40px 0;
+}
+
+.title-box input {
+    text-align: center;    
+    outline: none;
+    background-color: #D9D9D9;          
+}
+
+
+.content-box textarea {    
+    background-color: #fff;
+    padding:100px;
+    font-size: 1.3rem;
+    width: 90%;
+    height: 90%;
+    outline: none;
+    resize: none;
+}
