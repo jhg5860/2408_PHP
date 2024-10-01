@@ -23,7 +23,7 @@ function my_board_select_pagination(PDO $conn, array $arr_param) {
         ." * "
         ." FROM "
         ."        board "
-        ." WHERE"
+        ." WHERE "
         ."          deleted_at IS NULL "
         ." ORDER BY "
         ."       created_at DESC "
