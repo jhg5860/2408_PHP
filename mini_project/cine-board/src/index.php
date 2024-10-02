@@ -74,7 +74,7 @@ try {
             <?php foreach($result as $item) { ?>
                 <div class="list-content item">
                     <div><?php echo $item["id"] ?></div>
-                    <div><a href="./detail.php?id=<?php echo $item["id"] ?>&page=<?php echo $page?>"><?php echo $item["title"]?></div></a>
+                    <div><a href="/detail.php?id=<?php echo $item["id"] ?>&page=<?php echo $page?>"><?php echo $item["title"]?></div></a>
                     <div><?php echo $item["created_at"]?></div>
                 </div>               
             <?php  } ?>           

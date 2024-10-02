@@ -81,10 +81,61 @@ if(!$result_flg) {
 
 $result_cnt = $stmt->rowCount();
 
-if(!$result_cnt !== 1) {
+if($result_cnt !== 1) {
     throw new Exception("Insert Count 이상");
 }
 
 return true;
 
 }
+
+/**
+ * id로 게시글 조회
+ */
+function my_board_select_id(PDO $conn, array $arr_param) {
+    $sql = 
+                " SELECT "
+                ."           *    "
+                ." FROM  "
+                ."          board "
+                ." WHERE "
+                ."         id= :id "
+    ;
+
+
+    $stmt = $conn->prepare($sql);
+    $result_flg = $stmt->execute($arr_param);
+
+    if(!$result_flg) {
+        throw new Exception("쿼리 실행 실패");
+
+    }
+    return $stmt->fetch();
+
+}
+
+
+
+
+
+function my_board_delete_id(PDO $conn, $arr_param) {
+    $sql =
+        " UPDATE board "
+        ." SET "
+        ."       updated_at =NOW() "
+        ."       ,deleted_at = NOW() "
+        ." WHERE  "
+        ."       id= :id "
+        ;
+
+        $stmt =$conn->prepare($sql);
+        $result_flg = $stmt->execute($arr_param);
+
+        if(!$result_flg) {
+            throw new Exception("쿼리 실행 실패");
+        }
+        if($stmt->rowCount() !== 1) {
+            throw new Exception("Delete Count 이상");
+        }
+        return true;
+    }

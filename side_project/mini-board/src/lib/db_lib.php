@@ -112,7 +112,7 @@ function my_board_select_id(PDO $conn, array $arr_param) {
     
 }
 
-// 09.26
+// 09.26 update 함수
 
 function my_board_update(PDO $conn, array $arr_param) {
     $sql = 

@@ -15,10 +15,6 @@
 }
 
 .img-select-box {
-    background: url(../avengers_end.jpg);
-    background-position:space-between;
-    background-repeat: no-repeat;
-    background-size: auto;
     width:auto;
     min-height:500px;
     margin: 40px;
