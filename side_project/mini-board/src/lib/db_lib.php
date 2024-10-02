@@ -23,7 +23,7 @@ function my_board_select_pagination(PDO $conn, array $arr_param) {
         ." * "
         ." FROM "
         ."        board "
-        ." WHERE"
+        ." WHERE "
         ."          deleted_at IS NULL "
         ." ORDER BY "
         ."       created_at DESC "
@@ -112,7 +112,7 @@ function my_board_select_id(PDO $conn, array $arr_param) {
     
 }
 
-// 09.26
+// 09.26 update 함수
 
 function my_board_update(PDO $conn, array $arr_param) {
     $sql = 

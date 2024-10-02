@@ -15,17 +15,18 @@ $max_page =0;
 try {
     // PDO Instance
     $conn = my_db_conn();
-
+    
+    // -------------------------- 09/24
+    // pagination설정 처리
+    $page = isset($_GET["page"]) ?(int)$_GET["page"] : 1; // 현재 페이지 획득
+    $offset = ($page - 1) * MY_LIST_COUNT; // 오프셋 설정
+    
     // ----------------------- 09/25
     // max page 획득 처리
     //------------------------
     $max_board_cnt = my_board_total_count($conn); // 게시글 총 수 획득
     $max_page = (int)ceil($max_board_cnt / MY_LIST_COUNT); // max page 획득
     
-    // -------------------------- 09/24
-    // pagination설정 처리
-    $page = isset($_GET["page"]) ?(int)$_GET["page"] : 1; // 현재 페이지 획득
-    $offset = ($page - 1) * MY_LIST_COUNT; // 오프셋 설정
     //  09/25
     $start_page_button_number = (int)(floor(($page-1)/ MY_PAGE_BUTTON_COUNT) * MY_PAGE_BUTTON_COUNT ) +1 ; //  화면 표시 페이지 버튼 시작 값
     $end_page_button_number = $start_page_button_number + (MY_PAGE_BUTTON_COUNT-1); // 화면 표시 페이지 버튼 마지막 값
