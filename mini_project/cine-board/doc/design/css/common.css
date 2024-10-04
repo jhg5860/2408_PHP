@@ -7,7 +7,8 @@
 }
 
 body {
-    margin-top:100px;
+    margin-top:50px;
+    margin-top:250px;
     display: flex;    
     justify-content: center;
     
@@ -66,5 +67,11 @@ button:hover {
 }
 .footer-btn {
     margin: 40px 0;
+<<<<<<< HEAD
+=======
 }
 
+.main-footer { 
+    margin-bottom: 40px;
+>>>>>>> cf3c0ae4f8d861e0430acec60fa5847134602981
+}
