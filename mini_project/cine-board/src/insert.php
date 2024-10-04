@@ -66,10 +66,8 @@ if(strtoupper($_SERVER["REQUEST_METHOD"]) === "POST") {
 
 
 }
-
-
-
 ?>
+
 
 
 <!DOCTYPE html>
@@ -89,7 +87,7 @@ if(strtoupper($_SERVER["REQUEST_METHOD"]) === "POST") {
   
         <form action="/insert.php" method="post" enctype="multipart/form-data">
             <div class="title-box">
-                <input type="text" id="title" name="title">
+                <input type="text" id="title" name="title" >
             </div>        
             <!-- 이미지 -->
             <div class="img-select-box">

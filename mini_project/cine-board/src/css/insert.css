@@ -8,11 +8,14 @@
 
 
 .img-select-box {
-    width:auto;
-    height:250px;
-    margin: 40px;
+    min-height: 250px;
 }
 
+
+.img-select-box >img {
+    width:300px;
+    
+} 
 .title-box input {
     text-align: center;    
     outline: none;
@@ -27,4 +30,8 @@
     width: 90%;
     height: 90%;
     resize: none;
+    margin-bottom: 40px;
+}
+.main-footer {
+    margin-top:50px;
 }

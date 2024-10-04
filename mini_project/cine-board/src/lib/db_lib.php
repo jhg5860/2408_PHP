@@ -114,10 +114,7 @@ function my_board_select_id(PDO $conn, array $arr_param) {
 
 }
 
-
-
-
-
+// 게시글 삭제
 function my_board_delete_id(PDO $conn, $arr_param) {
     $sql =
         " UPDATE board "
@@ -139,3 +136,29 @@ function my_board_delete_id(PDO $conn, $arr_param) {
         }
         return true;
     }
+
+// 게시글 수정
+function my_board_update(PDO $conn, $arr_param) {
+   $sql =
+        " UPDATE board "
+        ." SET "
+        ." title = :title "
+        ." ,img= :img "
+        ." ,content= :content "
+        ." ,updated_at =NOW() "
+        ." WHERE "
+        ." id =:id "
+        ;
+
+        $stmt =$conn->prepare($sql);
+        $result_flg = $stmt->execute($arr_param);
+
+        if(!$result_flg) {
+            throw new Exception("쿼리 실행 실패");
+        }
+
+        if($stmt->rowCount() !== 1) {
+            throw new Exception("Update Count 이상");
+        }
+        return true;
+}

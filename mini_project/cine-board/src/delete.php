@@ -87,7 +87,7 @@ try {
         </div>        
         <!-- 이미지 -->
         <div class="img-select-box">
-            <img src=<?php ?> alt="">       
+            <img src=<?php echo $result["img"]?> alt="">       
 
         </div>
         <div class="content-box">
@@ -105,7 +105,7 @@ try {
             <form action="/delete.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $result["id"]?>">
                 <button type="submit"class="button-small">삭제</button>
-                <a href="/detail.php?id<?php echo $result["id"];?>&page=<?php echo $page;?>"><button class="button-small">취소</button></a>
+                <a href="/detail.php?id=<?php echo $result["id"]?>&page=<?php echo $page?>"><button type="button" class="button-small">취소</button></a>
             </form>
         </div>
      </main>      

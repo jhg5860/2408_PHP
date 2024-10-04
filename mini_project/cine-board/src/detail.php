@@ -59,8 +59,7 @@ try {
         </div>        
         <!-- 이미지 -->
         <div class="img-select-box">
-            <img src=<?php  ?> alt="">       
-
+            <img src=<?php echo $result["img"] ?> alt="">       
         </div>
         <div class="content-box">
             <?php echo $result["content"]?> 

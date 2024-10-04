@@ -14,18 +14,20 @@
     font-weight: 900;
 }
 
-.img-select-box {
-    width:auto;
-    min-height:500px;
-    margin: 40px;
+.img-select-box {    
+    min-height: 400px;
 }
+
+.img-select-box >img {
+    width:300px;
+    
+} 
 
 .content-box {
     display: flex;
     justify-content: center;
     width: auto;
     min-height : auto;
-    margin: 40px;
     color: #000;
 }
 
@@ -35,3 +37,7 @@
     font-size: 1.5rem;
 }
 
+.main-footer {
+    padding:20px;
+    margin-bottom:20px;
+}

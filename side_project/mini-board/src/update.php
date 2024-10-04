@@ -101,7 +101,7 @@
     require_once(MY_PATH_ROOT."header.php");
     ?>
     <main> 
-        <form action="/update.php" method="post">
+        <form action="/update.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value ="<?php echo $result["id"] ?>">            
             <input type="hidden" name="page" value="<?php echo $page?>">
 
