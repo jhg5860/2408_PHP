@@ -3,39 +3,59 @@
 require_once($_SERVER["DOCUMENT_ROOT"]."/config.php");
 require_once(MY_PATH_DB_LIB);
 
+
 $conn = null;
 
 try {
     if(strtoupper($_SERVER["REQUEST_METHOD"] === "GET")) {
         $id= isset($_GET["id"]) ? (int)$_GET["id"] :0;
         $page =isset($_GET["page"]) ? (int)$_GET["page"] :1;
-
+        
         if($id <1) {
             throw new Exception("파라미터 오류");            
         }
-
+        
+        
         $conn =my_db_conn();
-
+        
         $arr_prepare = [
             "id" => $id
         ];
-
+        
         $result= my_board_select_id($conn ,$arr_prepare);
-
-        } else {
+              
+    } else {
         $id = isset($_POST["id"]) ? (int)$_POST["id"] :0;
-
+        
         $page = isset($_POST["page"]) ? (int)$_POST["page"] :1;
-
+        
         $title = isset($_POST["title"]) ? $_POST["title"] :"";
    
         $content = isset($_POST["content"]) ?$_POST["content"] :"";
+        $file = $_FILES["file"];
+        $type = explode("/", $file["type"]);
+        $extension = $type[1];
+        $file_name = uniqid().".".$extension;
+        $file_path = "img/".$file_name;
+        move_uploaded_file($file["tmp_name"], MY_PATH_ROOT.$file_path);
 
+        $conn = my_db_conn();
+
+        $arr_prepare =[
+            "title" => $_POST["title"]
+            ,"content" => $_POST["content"]
+            ,"img" => "/".$file_path
+        ];
         
-
+        $img =  isset($_POST["img"]) ?$_POST["img"] : "/".$file_path ;
+        
+        
         if($id<1 || $title === "") {
             throw new Exception("파라미터 오류");
         }
+
+        
+
         $conn =my_db_conn();
 
         $conn->beginTransaction();
@@ -44,8 +64,7 @@ try {
             "id" =>$id
             ,"title"=>$title
             ,"content"=>$content
-            
-           
+            ,"img" =>$img        
           
             
         ];

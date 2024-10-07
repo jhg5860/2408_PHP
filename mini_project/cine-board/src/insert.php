@@ -37,7 +37,7 @@ if(strtoupper($_SERVER["REQUEST_METHOD"]) === "POST") {
         // file파일 경로라는 변수는 img 폴더안에 이미지파일을 저장하는 경로 
         $file_path = "img/".$file_name;
         // 변수 file_name이 어떤식 데이터 값이 담겨있는지 보여주는방법
-        var_dump($file_name);
+        // var_dump($file_name);
 
         move_uploaded_file($file["tmp_name"], MY_PATH_ROOT.$file_path);
 
