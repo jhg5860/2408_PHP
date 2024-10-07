@@ -121,6 +121,7 @@ function my_board_update(PDO $conn, array $arr_param) {
             ."      title = :title "
             ."      ,content = :content "
             ."       ,updated_at = NOW() "
+            .(isset($arr_param["img"]) ?  " ,img= :img " :"")
             ." WHERE "
             ."       id = :id "
             ;

@@ -85,7 +85,7 @@
 <body>
     <!-- 메인으로 가는 방법 -->
     <?php 
-    require_once(MY_PATH_ROOT."header.php");
+    require_once(MY_PATH_HEADER);
     ?>
     <main>
         <div class="main-header">

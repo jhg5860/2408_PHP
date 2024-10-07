@@ -44,7 +44,7 @@
 </head>
 <body>
     <?php 
-    require_once(MY_PATH_ROOT."header.php");
+    require_once(MY_PATH_HEADER);
     ?>
 <main>
     <div class="main-content">               
@@ -64,7 +64,15 @@
             <div class="box-title">작성일자</div>
             <div class="box-content"><?php echo $result["created_at"] ?></div>                         
         </div>
-    </div>                   
+        <!-- 10.07 -->
+        <?php if(!is_null($result["img"])) { ?>
+        <div class="box">
+            <div class="box-title">이미지</div>
+            <img src="<?php echo $result["img"]?>" alt="">
+        </div>
+        <?php } ?>
+ 
+        </div>                   
         <div class="main-footer">
             <a href="/update.php?id=<?php echo $result["id"] ?>&page=<?php echo $page ?>"><button type="button" class="btn-small">수정</button></a>
             <a href="/index.php?page=<?php echo $page ?>"><button type="button" class="btn-small">취소</button></a>

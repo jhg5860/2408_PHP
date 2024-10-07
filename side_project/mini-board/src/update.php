@@ -49,6 +49,9 @@
             //content 획득
             $content = isset($_POST["content"]) ? $_POST["content"] :"";
 
+            // file 획득
+            $file = $_FILES("file");
+
             if($id <1 || $title === "") {
                 throw new Exception("파라미터 오류");
             }
@@ -65,6 +68,35 @@
             ,"title" => $title
             ,"content" => $content
             ];
+
+            // 10.07
+            // file 저장 처리
+            if($file["name"] !== "") {
+            // 기존 파일 삭제
+            $arr_preapare_select = [
+                "id"=>$id
+            ];
+            $result = my_board_select_id($conn, $arr_preapare_select);
+            if(!is_null($result["img"])){
+                unlink(MY_PATH_ROOT.$result["img"]);    
+            }    
+
+
+            //
+
+            $type = explode("/", $file["type"]);
+            $extension = $type[1];
+            $file_name = uniqid().".".$extension;
+            $file_path = "/img/".$file_name;
+
+            move_uploaded_file($file["tmp_name"], MY_PATH_ROOT.$file_path); // 파일 저장
+           
+            $arr_prepare["img"] = $file_path;
+        
+        }            
+            // 리눅스 기반 권한
+            // chmod($file_path , 0777);
+
 
             my_board_update($conn, $arr_prepare);
 
@@ -98,7 +130,7 @@
 </head>
 <body>
     <?php 
-    require_once(MY_PATH_ROOT."header.php");
+    require_once(MY_PATH_HEADER);
     ?>
     <main> 
         <form action="/update.php" method="post" enctype="multipart/form-data">
@@ -120,6 +152,13 @@
                 <div class="box-content">
                     <textarea name="content" id="content"><?php echo $result["content"]?></textarea>
                 </div>             
+            </div>
+            <!-- 10.07 -->
+            <div class="box">
+                <div class="box-title">이미지</div>
+                <div class="box-content">
+                    <input type="file" name="file" id="file">
+                </div>
             </div>        
             <div class="main-footer">
                 <button type="submit" class="btn-small">완료</button>
