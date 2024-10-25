@@ -1,3 +1,4 @@
+// 10.24
 // -------------
 // 함수 선언식
 // 호이스팅에 영향받는다.
@@ -67,3 +68,27 @@ function test4(a ,b) {
         return 'a가 더 큼'
     }
 }
+
+// ------------------ 10/25
+// 즉시실행 함수 : 정의 되자마자 실행 되는 함수 - 딱 한번만 호출되는 함수 
+// ------------------
+const execFnc= (function(a,b) {
+    return a + b ;
+})(5,6);
+
+// --------------
+// 콜백 함수 : 다른 함수의 파라미터로 전달되어 특정 조건에 따라 호출되는 함수
+// --------------
+function myCallBack() {
+    console.log('myCallBack');
+}
+
+function myChkPrint(callBack , flg) {
+    if (flg) {
+        callBack();
+    }
+}
+
+myChkPrint(myCallBack , true);
+
+myChkPrint(() => 'ttt', true);
