@@ -23,13 +23,6 @@ Math.min(...arr); // 1
 Math.abs(-1); // 1 
 Math.abs(1); // 1 
 
-
-
-
-
-
-
-
 // console.log('start');
 // for(let i =0; i < 1000000; i++) {
 //     let test = Math.ceil(Math.random() *10) +1;

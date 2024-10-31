@@ -68,7 +68,7 @@ TITLE.classList.add('class-2', 'class-3', 'class-4');
 TITLE.classList.remove('class-3');
 
 // classList.toggle() : 해당 클래스를 on/off
-TITLE.classList.remove('toggle');
+TITLE.classList.toggle('toggle');
 
 // setInterval(() =>
 //     {TITLE.classList.toggle('toggle')} , 10 );
