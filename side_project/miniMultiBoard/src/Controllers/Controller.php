@@ -2,7 +2,7 @@
 // Controllers.php < 부모  UserController <자식
 namespace Controllers;
 
-
+use Lib\Auth;
 use Models\BoardsCategory;
 
 class Controller {
@@ -18,7 +18,8 @@ class Controller {
         }
 
         // 유저 로그인 및 권한체크
-        
+        Auth::chkAuthorization();
+
         // 헤더 드롭다운 리스트 획득 
         $boardsCategoryModel = new BoardsCategory();
         $this->arrBoardNameInfo =$boardsCategoryModel->getBoardNameList();

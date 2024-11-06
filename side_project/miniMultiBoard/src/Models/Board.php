@@ -27,5 +27,64 @@ class Board extends Model {
             exit;
         }
     }
+
+    // 직접 해본거
+//     public function getBoardDetail($paramArr) {
+//         try {
+//             $sql =
+//             ' SELECT  '  
+//             .' boards.b_title '
+//             .' ,boards.b_content '
+//             .' ,boards.b_img '
+//             .' ,users.u_name '
+//             .' FROM '
+//             .' boards '
+//             .' JOIN '
+//             .' users '
+//             .' on '
+//             .' boards.u_id = users.u_id '
+//             .' where '                
+//             .' boards.b_id = :b_id '
+//             ;
+            
+//             $stmt = $this->conn->prepare($sql);
+//             $stmt->execute($paramArr);          
+//             return $stmt->fetch();
+            
+//         } catch(Throwable $th) {
+//             echo 'u->getBoardDetail(), '.$th->getMessage();
+//             exit;
+//         }
+//     }
+    
+// }
+
+
+public function getBoardDetail($paramArr) {
+    try {
+        $sql =
+            ' SELECT '
+            .' boards.b_title '
+            .' ,boards.b_content '
+            .' ,boards.b_img '
+            .' ,boards.b_id '
+            .' ,users.u_name'
+            .' FROM boards '
+            .' JOIN users '
+            .' ON boards.u_id = users.u_id '
+            .' WHERE '
+            .' boards.b_id = :b_id '
+            .' AND boards.deleted_at IS NULL '               
+        ;
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute($paramArr);          
+        return $stmt->fetch();
+
+    } catch(Throwable $th) {
+        echo 'Board->getBoardDetail(), '.$th->getMessage();
+        exit;
+    }
 }
 
+}
