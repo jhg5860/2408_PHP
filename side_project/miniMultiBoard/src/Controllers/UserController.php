@@ -48,16 +48,16 @@ class UserController extends Controller {
         }
         
         // 세션에 u_id 저장
+        $_SESSION['u_id'] =$resultUserInfo['u_id'];
         $_SESSION['u_email'] = $resultUserInfo['u_email'];
-
         // 로케이션 처리
         return 'Location: /boards';
     }
 
     public function logout() {
-        unset($_SESSION['u_email']); // 유저 이메일 제거
-        session_destroy(); // 세션 파기
-
+        unset($_SESSION['u_id']); //u_id 제거
+        unset($_SESSION['u_email']); // u_email(유저 이메일) 제거
+        session_destroy(); // 세션 파기 
         return 'Location: /login';
     }
 

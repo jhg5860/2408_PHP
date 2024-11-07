@@ -26,7 +26,8 @@
         });
     });
 
-    document.querySelector('#btnInsert').addEventListener('click', ()=> {
-        window.location = '/boards/insert';
+    const BTN_INSERT = document.querySelector('#btnInsert')
+    BTN_INSERT.addEventListener('click', ()=> {
+        window.location = '/boards/insert?bc_type=' + document.querySelector("#inputBoardType").value;
     });
 })();
