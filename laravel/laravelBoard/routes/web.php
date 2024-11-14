@@ -31,5 +31,24 @@ Route::get('/logout',[UserController::class, 'logout'])->name('logout');
 
 
 // 게시판 관련
-Route::resource('/boards', BoardController::class)->except(['update', 'edit']);
+Route::middleware('auth')->resource('/boards', BoardController::class)->except(['update', 'edit']);
 
+//11.14
+/**
+ * 로그인이 아닌 상태에서 로그인 페이지로 이동
+ * Route::middleware('auth')->resource('/boards', BoardController::class)->except(['update', 'edit']);
+ * kernel.php에 laravel이 'auth' => \App\Http\Middleware\Authenticate::class로 등록되있어서 파라미터 auth만 추가하면 사용할수 있다.
+ */
+
+// 내가한거
+// Route::get('/regist',[UserController::class, 'goRegist'])->name('goRegist');
+// Route::post('/regist',[UserController::class, 'regist'])->name('regist');
+
+//회원가입
+Route::get('/registration', [UserController::class , 'registration'])->name('get.registraration');
+Route::post('/registration', [UserController::class, 'storeRegistration'])->name('post.registration');
+
+// insert
+
+
+Route::get('/insert', [BoardController::class, 'insert'])->name('insert');

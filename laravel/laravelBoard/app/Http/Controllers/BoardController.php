@@ -32,7 +32,7 @@ class BoardController extends Controller
      */
     public function create()
     {
-        // 작성 페이지로 이동
+       return view('insert');
     }
 
     /**
@@ -63,6 +63,7 @@ class BoardController extends Controller
         Log::debug('획득 상세 데이터', $result->toArray());  // toArray :eloquent model 를 배열로 변환
 
         return response()->json($result->toArray()); 
+        
     }
 
     /**

@@ -1,12 +1,12 @@
 @extends('layout.layout')
 
-@section('title', '로그인 페이지')
+@section('title', '회원가입 페이지')
     
 @section('bodyClassVh', 'vh-100')
 
 @section('main')
     <main class="d-flex justify-content-center align-items-center h-75">
-        <form style="width: 300px;" action="{{ route('login')}}" method="post">
+        <form style="width: 300px;" action="{{ route('regist')}}" method="post">
           @csrf
            {{-- 에러메세지 출력  --}}
            @if($errors->any()) 
@@ -27,15 +27,18 @@
               <label for="u_password" class="form-label">비밀번호</label>
               <input type="password" class="form-control" id="u_password" name="u_password">
             </div>
-            <button type="submit" class="btn btn-dark w-100 mb-3">로그인</button>
-            {{-- <a href="{{route('goRegist')}}"class="btn btn-dark w-100 mb-3">회원가입</a>   --}}
-            <a href="{{route('get.registraration')}}"class="btn btn-dark w-100 mb-3">회원가입</a>  
+            <div class="mb-3">
+              <label for="u_password_chk" class="form-label">비밀번호 확인</label>
+              <input type="password" class="form-control" id="u_password_chk" name="u_password_chk">
+            </div>
+            <div class="mb-3">
+              <label for="u_name" class="form-label">이름</label>
+              <input type="text" class="form-control" id="u_name" name="u_name">
+            </div>
+            <button type="submit" class="btn btn-dark w-100 mb-3">가입완료</button>            
+            <a href="/login" class="btn btn-secondary w-100">취소</a>
         </form>
     </main>
 @endsection
     
    
-
-<!-- 11.04 bootstrap 로그인
-    class가 길어져서 지저분해진다. 버전이 바뀌며 기능이 바뀔수있어서 주의해야한다.
--->

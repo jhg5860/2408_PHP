@@ -13,6 +13,10 @@ class Kernel extends HttpKernel
      *
      * @var array<int, class-string|string>
      */
+
+    /**
+     * 11.14 전역에서 사용할수 있다.
+     */
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
@@ -27,6 +31,10 @@ class Kernel extends HttpKernel
      * The application's route middleware groups.
      *
      * @var array<string, array<int, class-string|string>>
+     */
+
+    /**
+     * 11.14 각각의 route에서만 사용할수 있다.
      */
     protected $middlewareGroups = [
         'web' => [
@@ -52,6 +60,9 @@ class Kernel extends HttpKernel
      * These middleware may be assigned to groups or used individually.
      *
      * @var array<string, class-string|string>
+     */
+    /**
+     * 11.14 웹이든 앱이든 모든 구간에서 사용할 수 있다.
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
