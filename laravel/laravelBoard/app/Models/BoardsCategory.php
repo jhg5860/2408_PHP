@@ -11,7 +11,7 @@ class BoardsCategory extends Model
     protected $table = "boards_category";
     protected $primaryKey ="bc_id";
 
-    protected $filable = [
+    protected $fillable = [
         'bc_type'
         ,'bc_name'
     ];
