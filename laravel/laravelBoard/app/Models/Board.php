@@ -13,9 +13,9 @@ class Board extends Model
 
     protected $primaryKey ='b_id';
 
-    protected $filable = [
+    protected $fillable = [
         'u_id'
-        ,'b_id'
+        ,'bc_type'
         ,'b_title'
         ,'b_content'
         ,'b_img'

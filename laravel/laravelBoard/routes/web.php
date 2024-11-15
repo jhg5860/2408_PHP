@@ -25,8 +25,8 @@ Route::get('/login', [UserController::class, 'goLogin'])->name('goLogin');
 
 
 //로그인 관련
-Route::get('/login', [UserController::class, 'goLogin'])->name('goLogin');
-Route::post('/login',[UserController::class, 'login'])->name('login');
+Route::middleware('guest')->get('/login', [UserController::class, 'goLogin'])->name('goLogin');
+Route::middleware('guest')->post('/login',[UserController::class, 'login'])->name('login');
 Route::get('/logout',[UserController::class, 'logout'])->name('logout');
 
 
@@ -45,10 +45,10 @@ Route::middleware('auth')->resource('/boards', BoardController::class)->except([
 // Route::post('/regist',[UserController::class, 'regist'])->name('regist');
 
 //회원가입
-Route::get('/registration', [UserController::class , 'registration'])->name('get.registraration');
-Route::post('/registration', [UserController::class, 'storeRegistration'])->name('post.registration');
+Route::middleware('guest')->get('/registration', [UserController::class , 'registration'])->name('get.registraration');
+Route::middleware('guest')->post('/registration', [UserController::class, 'storeRegistration'])->name('post.registration');
 
-// insert
+// // insert
 
 
-Route::get('/insert', [BoardController::class, 'insert'])->name('insert');
+// Route::get('/insert', [BoardController::class, 'insert'])->name('insert');
