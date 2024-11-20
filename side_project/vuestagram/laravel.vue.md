@@ -1,6 +1,6 @@
 laravel +vue
 
-composer create project laravel/laravel="9" vuestagram  라라벨 설치
+composer create-project laravel/laravel="9" vuestagram  라라벨 설치
 composer remove laravel/sanctum sanctum파일 제거
 node.modules .파일 생성 - npm install
 npm run dev - 개발모드로 빌드 
@@ -74,7 +74,7 @@ AppComponet.vue
         </div>
     </header>
 
-    <!-- Main -->
+    <!-- Main
     <main>
         <div class="container">
             
@@ -83,7 +83,7 @@ AppComponet.vue
     <!-- Footer -->
      <footer>
         <p> ⓒ 2024. Meerkat All rights reserved.</p>
-     </footer>
+     </footer> -->
 </template>
 
 <script setup>
@@ -131,6 +131,7 @@ createApp({
 .use(router)
 .mount('#app');
 
+web.php
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any','.*');
@@ -140,3 +141,4 @@ Route::get('/{any}', function () {
 
 @click="$router.back()" 이전 링크로 이동
 
+php artisan key:generate - app_key 설치
