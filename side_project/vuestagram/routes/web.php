@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// session 인증 시스템을 이용할때 사용
 Route::get('/{any}', function () {
     return view('welcome');
 })->where('any','.*');
