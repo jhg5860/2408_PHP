@@ -1,13 +1,14 @@
 <template>
     <div class="user-info-box">
-        <img src="/profile/animal.png">
+        <img :src="$store.state.user.userInfo.profile">
         <div class="user-info-content">
-            <h2>유저아이디</h2>
-            <h3>작성글 수 : 999</h3>
+            <h2>{{ $store.state.user.userInfo.account }}</h2>
+            <h3>작성글 수 : {{ $store.state.user.userInfo.boards_count }}</h3>
         </div>
         <router-link to="/board/create"><button class="btn btn-submit">글작성</button></router-link>
     </div>
 </template>
+
 <script setup>
 
 </script>

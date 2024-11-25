@@ -3,19 +3,19 @@
     <!-- 리스트 -->
      <div class="board-list-box">
         <div @click="openModal"class="item">
-            <img src="/img/moon.png" alt="">
-        </div>
-        <div @click="openModal"class="item">
-            <img src="/img/animal.png" alt="">
-        </div>
-        <div @click="openModal" class="item">
             <img src="/img/dog.png" alt="">
         </div>
         <div @click="openModal"class="item">
+            <img src="/img/dog1.png" alt="">
+        </div>
+        <div @click="openModal" class="item">
             <img src="/img/dog2.png" alt="">
         </div>
         <div @click="openModal"class="item">
-            <img src="/img/ghost.png" alt="">
+            <img src="/img/dog3.png" alt="">
+        </div>
+        <div @click="openModal"class="item">
+            <img src="/img/dog4.png" alt="">
         </div>
      </div>
 
