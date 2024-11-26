@@ -64,9 +64,15 @@ class Handler extends ExceptionHandler
             $code = 'E01';
         } else if ($th instanceof PDOException) {
             $code = 'E80';
-        }
+        } 
         
         $errInfo = $this->context()[$code];
+
+        // 커스텀 Exception 인스턴스 확인
+        if($th instanceof MyAuthException) {
+            $code = $th->getMessage();
+            $errInfo = $th->context()[$code];
+        }
 
 
         // Response Data 생성

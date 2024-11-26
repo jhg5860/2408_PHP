@@ -2,9 +2,12 @@
 
 namespace App\Utils;
 
+
+use App\Exceptions\MyAuthException;
 use MyEncrypt;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use PDOException;
 
 class  MyToken {
@@ -49,25 +52,73 @@ class  MyToken {
      * 
      * @return bool true
      */
-    public function updateRefreshToken(User $userInfo, string $refreshToken) {
+    public function updateRefreshToken(User $userInfo, string |null $refreshToken) {
         // 유저 모델에 리프래시 토큰 변경
         $userInfo->refresh_token = $refreshToken;
        
-        DB::beginTransaction();
-
         if(!($userInfo->save())) {
             DB::rollBack();
             throw new PDOException('Error updateRefreshToken()');
 
         }
-        DB::commit();
-
+       
         return true;
     }
 
+    /**
+     * 토큰 유효성 체크
+     * 
+     * @param string $token 베어럴토큰
+     * 
+     * @return bool true
+     */
+    public function chkToken(string |null $token) {
+        Log::debug("***********chkToken Start***********");
+        // 토큰 존재 유무 체크
+        if(empty($token)) {
+            throw new MyAuthException('E20');
+        }
+
+        // 토큰 위조 검사
+        list($header , $payload , $signature) = $this->explodeToken($token);
+        if(MyEncrypt::subSalt($this->createSignature($header, $payload) ,env('TOKEN_SALT_LENGTH')) 
+            !== MyEncrypt::subSalt($signature ,env('TOKEN_SALT_LENGTH'))) {
+            throw new MyAuthException('E22');
+        }
+
+        // 유효시간 체크
+        if($this->getValueInPayload($token , 'exp') < time())  {
+            throw new MyAuthException('E21');
+        }
+
+        Log::debug("***********chkToken End************");
+        return true;
+
+    }
+    /**
+     * 페이로드에서 해당하는 키의 값을 반환
+     * 
+     * @param string $token
+     * @param string $key
+     * 
+     * @return 페이로드에서 추출한 값
+     */
+    public function getValueInPayload(string $token, string $key) {
+        // 토큰 분리
+        list($header ,$payload, $signature) =$this->explodeToken($token);
+        $decodePayload =json_decode(MyEncrypt::base64UrlDecode($payload));
+
+        // 페이로드에 해당 키의 데이터가 있는지 체크
+        if(empty($decodePayload) || !isset($decodePayload->$key)) {
+            throw new MyAuthException('E24');
+        }
+        
+        return $decodePayload->$key;
+        
+    }
 
     // -------------------------------
-    // ------------ private
+    // private
     // -------------------------------
     /**
      * JWT Header 생성
@@ -128,4 +179,24 @@ class  MyToken {
             ,MyEncrypt::makeSalt(env('TOKEN_SALT_LENGTH'))
          );
     }
+
+    /**
+     * 토큰 분리
+     * 
+     * @param string $token
+     * 
+     * @return array $header , $payload, $signature
+     */
+    private function explodeToken($token) {
+        $arrToken = explode('.', $token);
+
+        // 토큰 분리 오류 체크
+        if(count($arrToken) !== 3) {
+            throw new MyAuthException('E23');
+        }
+        
+        return $arrToken;
+    }
+
+
 }
