@@ -22,6 +22,8 @@
 
     <!-- Main -->
     <main>
+        <!-- TODO: 나중에 버튼제거 -->
+        <!-- <button @click="$store.dispatch('user/chkTokenAndContinueProcess', () => {console.log('테스트')})">토큰만료체크</button> -->
         <UserInfoComponent v-if="$store.state.user.authFlg"/>
         <div class="container">
             <router-view></router-view>
