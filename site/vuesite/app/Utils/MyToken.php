@@ -74,8 +74,9 @@ class MyToken {
 
     // 액세스 토큰일 경우 아래 데이터 추가
         if($accessFlg) {
-            $payload['acc'] = $user->$account;
+            $payload['acc'] = $user->account;
         }
+        
 
         return MyEncrypt::base64UrlEncode(json_encode($payload));
      }
@@ -89,8 +90,9 @@ class MyToken {
      * @return string base64Signature
      */
 
-    private function createSignature(string $haeader, string $payload) {
-        return MyEncrypt::hashWithSalt(env('TOKEN_ALG')
+    private function createSignature(string $header, string $payload) {
+        return MyEncrypt::hashWithSalt(
+        env('TOKEN_ALG')
         ,$header.env('TOKEN_SECRET_KEY').$payload
         ,MyEncrypt::makeSalt(env('TOKEN_SALT_LENGTH')));
     }
