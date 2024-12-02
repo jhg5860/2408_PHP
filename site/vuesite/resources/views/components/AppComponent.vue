@@ -15,7 +15,7 @@
    <!-- Main -->
 
     <main>
-        <UserInfoComponet />
+        <UserInfoComponet v-if="$store.state.user.accessToken"/>
         <div class="container">
             <!-- router.js에 정의 된 route 경로에 해당하는 componet를 router-view에 출력 -->
             <router-view></router-view>
@@ -28,6 +28,8 @@
 </template>
 <script setup>
 import UserInfoComponet from './user/UserInfoComponet.vue';
+
+
 </script>
 <style>
 @import url('../../css/common.css');
