@@ -7,6 +7,6 @@ use Illuminate\Support\Facades\Facade;
 class MyEncryptFacade extends Facade {
     protected static function getFacadeAccessor()
     {
-        return 'MyEncript';
+        return 'MyEncrypt';
     }
 }
