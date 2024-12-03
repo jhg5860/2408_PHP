@@ -5,7 +5,9 @@ namespace App\Exceptions;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Log;
+use PDOException;
 use Throwable;
+use MyAuthException;
 
 class Handler extends ExceptionHandler
 {
@@ -45,18 +47,7 @@ class Handler extends ExceptionHandler
      * 주로 로깅이나 외부 서비스에 보고를 하기위한 작업 수행
      */
     public function report(Throwable $th) {
-        // 예외정보 초기화
-        $code= 'E99';
-        $errInfo = $this->context()[$code];
-
-        // 인스턴스 확인후 예외 정보 변경
-        if($th instanceof AuthenticationException) {
-            $code = $th->getMessage();
-        }
-        
-        $errInfo = $this->context()[$code];
-
-        Log::info($code.' : '.$errInfo['msg']);
+         Log::info('Report: '.$th->getMessage());
     }
 
 
@@ -71,9 +62,17 @@ class Handler extends ExceptionHandler
 
         // 인스턴스 확인 후 예외 정보 변경
         if($th instanceof AuthenticationException) {
-            $code = $th -> getMessage();
+            $code= 'E01';
+        } else if($th instanceof PDOException) {
+            $code= 'E80';
         }
         $errInfo = $this->context()[$code];
+
+        // 커스텀 Exception 인스턴스 확인
+        if($th instanceof MyAuthException) {
+            $code = $th->getMessage();
+            $errInfo =$th->context()[$code];
+        }
 
         // Response Data 생성
         $responseData = [

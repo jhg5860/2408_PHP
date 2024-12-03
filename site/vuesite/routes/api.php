@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('/login', [AuthController::class, 'login'])->name('post.login');
+Route::middleware('my.auth')->post('/logout', [AuthController::class, 'logout'])->name('post.logout');

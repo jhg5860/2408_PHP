@@ -12,7 +12,7 @@ class MyEncrypt {
      * @return string base64 URL encode
      */
     public function base64UrlEncode(string $json) {
-        return rtrim(strtr(base64_encode($json), '+/', '_'));
+        return rtrim(strtr(base64_encode($json), '+/', '-_'), '=');
     }
 
     /**
@@ -39,5 +39,15 @@ class MyEncrypt {
 
         return hash($alg,$str).$salt;
     }
-
+    /**
+     * 특정 길이의 솔트를 제거한 문자열을 반환
+     * 
+     * @param string $signature 솔트 포함된 시그니처
+     * @param int $saltLength 솔트 길이
+     * 
+     * @return string 솔트 제거한 문자열
+     */
+    public function subSalt(string $signature, int $saltLength) {
+        return mb_substr($signature, 0, (-1*$saltLength));
+    }
 }

@@ -1,12 +1,23 @@
+import axios from '../../axios';
+
+import router from '../../router';
 export default {
     namespaced: true,
     state: () => ({
-        accessToken: localStorage.getItem('accessToken')? localStorage.getItem('accessToken'): '',
+        // accessToken: localStorage.getItem('accessToken')? localStorage.getItem('accessToken'): '',
+        authFlg : localStorage.getItem('accessToken') ? true : false,
+        userInfo: localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : {},
     }),
     mutations: {
-        setAccessToken(state,accessToken) {
-            state.accessToken = accessToken;
-            localStorage.setItem('accessToken', accessToken);
+        // setAccessToken(state,accessToken) {
+        //     state.accessToken = accessToken;
+        //     localStorage.setItem('accessToken', accessToken);
+        // },
+        setAuthFlg(state, flg) {
+            state.authFlg = flg;
+        },
+        setUserInfo(state, userInfo) {
+            state.userInfo = userInfo;
         },
     },
     actions: {
@@ -19,23 +30,32 @@ export default {
          * @param {*} userInfo
          */
         login(context, userInfo) {
-            const url ='/api/login';
+            const url ='./api/login';
             const data = JSON.stringify(userInfo);
-            const config = {
-                headers: {
-                    'Content-Type' :'application/json'
-                }
-            }
+            // const config = {
+            //     headers: {
+            //         'Content-Type' :'application/json'
+            //     }
+            // }
 
-            axios.post(url,data,config)
+            // axios.post(url,data,config)
+            axios.post(url, data)
             .then(response=> {
-                // 토큰 저장
-
+            // 토큰 저장
+            //    context.commit('setAccessToken', response.data.accessToken);
+                localStorage.setItem('accessToken',response.data.accessToken);
+                localStorage.setItem('refreshToken',response.data.refreshToken);
+                localStorage.setItem('userInfo', JSON.stringify(response.data.data));
+                context.commit('setAuthFlg', true); 
+                context.commit('setUserInfo', response.data.data);
+                
+            // 보드 리스트로 이동
+                router.replace('/board');    
             })
             .catch(error=> {
               let errorMsgList= [];
               const errorData = error.response.data;
-              if(error.response.status === 422){
+              if(error.response.status === 422) {
               // 유효성 체크 에러
                     if(errorData.data.account) {
                         errorMsgList.push(errorData.data.account[0]);
@@ -54,6 +74,30 @@ export default {
 
             });
         },
+        /**
+         * 로그아웃 처리
+         * 
+         * @param {*} context
+         * 
+         */
+        logout(context) {
+            const url ='/api/logout';
+            const config ={
+                headers : {
+                    'Autorization': 'Bearer ' + localStorage.getItem('accessToken'),
+                }
+            }
+
+            axios.post(url, null, config)
+            .then()
+            .catch();
+
+            localStorage.clear(); // 로컬스토리지 비우기
+            //state 초기화
+            context.commit('setAuthFlg', false);
+            context.commit('setUserInfo', {});
+            router.replace('/login');
+        },        
     },
     getters: {
 

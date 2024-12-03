@@ -2,8 +2,12 @@
 
 namespace APP\Utils;
 
+use App\Exceptions\MyAuthException;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use MyEncrypt;
+use PDOException;
 
 class MyToken {
 
@@ -19,7 +23,52 @@ class MyToken {
 
         return [$accessToken, $refreshToken];
     }
+    /**
+     * 리프래시 토큰 업데이트
+     * 
+     * @param App\Model\User $userInfo 유저 정보
+     * @param string $refreshToken
+     * 
+     * @return bool true 
+     */
+    public function updateRefreshToken(User $userInfo, string $refreshToken) {
+        // 유저 모델에 리프래시 토큰 변경
+        $userInfo->refresh_token = $refreshToken;
+        
+        DB::beginTransaction();
 
+        if(!($userInfo->save())) {
+            DB::rollBack();
+            throw new PDOException('Error updateRefreshToken()');
+        }
+        DB::commit();
+
+        return true;
+    }
+    /**
+     * 토큰 유효성 체크
+     * 
+     * @param string |null $token 베어럴토큰
+     * 
+     * @return bool true
+     */
+    public function chkToken(string |null $token) {
+        Log::debug("**********chkToken start************");
+        // 토큰 존재 유무 체크
+        if(empty($token)) {
+            throw new MyAuthException('E20');
+        }
+        // 토큰 위조 검사
+        list($header, $payload, $signature) =$this->explodeToken($token);
+        if($this->createSignature($header, $payload) !== $signature) {
+
+        }
+        Log::debug("**********chkToken end************");
+
+        return true;
+    }
+
+    //------ private 
     /**
      * JWT 생성
      * 
@@ -97,4 +146,22 @@ class MyToken {
         ,MyEncrypt::makeSalt(env('TOKEN_SALT_LENGTH')));
     }
 
+    /**
+     * 토큰 분리
+     * 
+     * @param string $token
+     * 
+     * @return array $header, $payload, $signature 
+     * 
+     */
+    private function explodeToken($token) {
+        $arrToken = explode('.', $token);
+
+        // 토큰 분리 오류 체크
+        if(count($arrToken) !== 3) {
+            throw new MyAuthException('E23');
+        }
+
+        return $arrToken;
+    }
 }

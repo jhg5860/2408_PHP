@@ -1,26 +1,26 @@
 <template>
     <div class="board-list-box">
         <div class="item">
-            <img @click="openModal" src="/img/dog0.png">
+            <img @click="openModal" src="/img/item0.png">
         </div>
         <div class="item">
-            <img @click="openModal" src="/img/dog1.png">
+            <img @click="openModal" src="/img/item1.png">
         </div>
         <div class="item">
-            <img @click="openModal" src="/img/dog2.png">
+            <img @click="openModal" src="/img/item2.png">
         </div>
         <div class="item">
-            <img @click="openModal" src="/img/dog3.png">
+            <img @click="openModal" src="/img/item3.png">
         </div>
         <div class="item">
-            <img @click="openModal" src="/img/dog4.png">
+            <img @click="openModal" src="/img/item4.png">
         </div>      
     </div>
 
     <!-- 상세 모달 -->
      <div v-show="modalFlg" class="board-detail-box">
         <div class="item">
-            <img src="/img/dog3.png" >
+            <img src="/img/item0.png" >
             <hr>
              <p>내용내용</p>
              <hr>
